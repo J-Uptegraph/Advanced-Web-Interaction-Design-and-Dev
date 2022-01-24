@@ -1,0 +1,36 @@
+<script>
+  function showBlogPost(which) {
+    blog_place.innerHTML = posts[which];
+  }
+
+  let pointer = 0;
+  const blog_place = document.querySelector(".blog");
+  showBlogPost(pointer);
+
+  document.addEventListener("click", function (event) {
+    let clicked_thing = event.target;
+    if (clicked_thing.innerText === 'Next' && pointer < (posts.length - 1)) {
+      pointer++;
+      showBlogPost(pointer);
+    }
+  });
+
+// Necessary for next assignment
+// Install Improvements such as going backwards and forwards, no undefined, no errors
+
+  // let posts = [];
+
+  // let obj = {
+  //   title: '',
+  //   text: '',
+  //   date: ''
+  // };
+
+  // posts.push(obj);
+
+  // posts[0];
+
+  // posts[0].title;
+
+// Note: FIX THE UX SO THAT THE BUTTON DOES NOT MOVE!!! ITS ANNOYING.
+</script>

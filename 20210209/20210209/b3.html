@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+
+/* define a class instead of using a ruleset for all <div> elements */
+.bean {
+ width: 20px;
+ height: 20px;
+ border-radius: 50%;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+
+// Create Random RGB Values
+// Math.floor is how you CHOP the Decimal OFF and (convert to an Integer)
+
+for (let i = 0; i < 10; i++) {
+  let ele =  document.createElement("div");
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+  ele.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+//add the bean class
+  ele.classList.add("bean");	    
+  document.body.appendChild(ele);
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

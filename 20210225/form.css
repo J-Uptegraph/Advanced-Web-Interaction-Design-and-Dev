@@ -1,0 +1,16 @@
+.input {
+ width: 300px;
+ display: block;
+ border: solid 1px grey;
+ margin: 1vh 0 1vh 0;
+ font-size: 100%;
+ font-family: sans-serif;
+}
+
+button {
+ font-size: 100%;
+ font-family: sans-serif;
+ background-color: #ddeeff;
+ border: solid 1px grey;
+}
+    

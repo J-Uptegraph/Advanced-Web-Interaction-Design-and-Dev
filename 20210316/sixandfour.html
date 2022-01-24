@@ -1,0 +1,121 @@
+
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .number6 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: green;
+            color: white;
+            border: solid 2px black;
+            font-size: 80px;
+            float: right;
+        }
+
+        .number4 {
+            width: 120px;
+            height: 120px;
+            background: yellow;
+            color: black;
+            font-size: 100px;
+            border: solid 4px orange;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // I APOLOGIZE... I DIDN'T MAKE NEARLY ENOUGH PROGRESS AS I WAS QUITE CONFUSED
+        // HERE IS WHAT I HAD THUS FAR.
+
+        // Nested ifs and booleans... if 4 is pressed show 4 if 4 is pressed again
+        // Turn 4 off, if 4 is on and 6 is pressed, 6 is off, 6 is on. If 6 is off, and 6 is pressed,
+        // Turn 6 on, if 6 is on and 4 is pressed 6 is off turn 4 on
+        let numFour = true;
+        let numSix = true;
+        function makeThing(arg) {
+            let div1 = document.createElement("div");
+            div1.classList.add("number" + arg);
+            document.body.appendChild(div1);
+            let text = document.createTextNode(arg);
+            div1.appendChild(text);
+        }
+        document.addEventListener("keyup", function (event) {
+            if (event.key === '4' && numFour !== false) {
+                makeThing(event.key);
+            }
+            if (event.key === '6') {
+                numFour = false
+            }
+            if (event.key === '6' && numSix !== false) {
+                makeThing(event.key);
+                numSix = true;
+                if (event.key === '4' || event.key === '6') {
+                    numSix = false;
+                }
+            }
+        });
+
+        function makeThing(arg) {
+            let div1 = document.createElement("div");
+            div1.classList.remove("number" + arg);
+            document.body.appendChild(div1);
+            let text = document.createTextNode(arg);
+            div1.appendChild(text);
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- <script>
+    let place = [];
+    place[4] = place[6] = null;
+    //place[6] = null;
+
+function makeThing(arg) {
+            place[arg] = document.createElement("div");
+  place[arg].classList.add("number" + arg);
+  document.body.appendChild(place[arg]);
+  let text = document.createTextNode(arg);
+  place[arg].appendChild(text);
+}
+
+document.addEventListener("keyup", function(event) {
+  if (event.key === '4' || event.key === '6') {
+    if (!place[event.key]) {
+            makeThing(event.key);
+    }
+    else {
+            place[event.key].remove();
+    place[event.key] = null;
+    }
+  }
+  else if (event.key === 'Esc') {
+    if (place[4]) {
+            place[4].remove();
+      place[4] = null;
+    }
+    if (place[6]) {
+            place[6].remove();
+      place[6] = null;
+    }
+  }
+});         -->
+        
+    </script>
+</body>
+
+</html>

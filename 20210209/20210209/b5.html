@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+.bean {
+/* height: 20px;  don't need this now  */
+ border-radius: 50%;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+
+//get the size of the browser window
+const x = window.innerWidth;
+const y = window.innerHeight;
+
+//define <div> height and width
+const sizew = "20px";
+const sizeh = "20px";
+
+for (let i = 0; i < 10; i++) {
+  let ele =  document.createElement("div");
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+		    
+//set height and width
+  ele.style.height = sizeh;
+  ele.style.width = sizew;
+  ele.classList.add("bean"); 		    
+  document.body.appendChild(ele);
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

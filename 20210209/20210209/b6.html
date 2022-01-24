@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+.bean {
+ border-radius: 50%;
+ position: absolute;  /* we will set coordinates in JS */
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const winw = window.innerWidth;
+const winh = window.innerHeight;
+const width = "20px";
+const height = "20px";
+
+for (let i = 0; i < 50; i++) {  //bump up to 50 for visibility
+  let ele =  document.createElement("div");
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+  ele.style.width = width;
+  ele.style.height = height;
+
+//set a random position in the window	    
+  let top = Math.floor(winh * Math.random()) + 'px';
+  let left = Math.floor(winw * Math.random()) + 'px';
+  ele.style.left = left;
+  ele.style.top = top;
+
+  ele.classList.add("bean");  //add class bean to ele
+  document.body.appendChild(ele);  //append ele to <body>
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

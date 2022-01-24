@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+.bean {
+ border-radius: 50%;
+ position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const winw = window.innerWidth
+const winh = window.innerHeight;
+
+//make a non-circle shape, use a number instead of string
+const width = 27;
+const height = 18;
+
+for (let i = 0; i < 600; i++) {
+  let ele =  document.createElement("div");
+  
+  ele.style.width = `${width}px`;  //make a string
+  ele.style.height = `${height}px`;
+
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+  let top = (Math.floor(winh * Math.random()) - width) + 'px';
+  let left = (Math.floor(winw * Math.random()) - width) + 'px';
+  ele.style.left = left;
+  ele.style.top = top;
+
+  ele.classList.add("bean");  //add class bean to ele
+  document.body.appendChild(ele);  //append ele to <body>
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

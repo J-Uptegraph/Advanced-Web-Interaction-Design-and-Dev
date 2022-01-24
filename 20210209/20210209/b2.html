@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>web page</title>
+  <style>
+    div {
+    width: 20px;
+    height: 20px;
+/*  background-color: red;  don't need this now */
+    border-radius: 50%;
+    }
+    </style>
+</head>
+
+<body>
+
+<script>
+
+for (let i = 0; i < 10; i++) {
+  let ele =  document.createElement("div");
+
+// create random rgb values to make a random color
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+
+//assign a new background color in rgb(127,127,127) format
+  ele.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  document.body.appendChild(ele);
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <style>
+        body {
+            font-size: 200%;
+            font-weight: 700;
+            font-family: Tahoma, Helvetica, sans-serif;
+            margin: 40px;
+        }
+    </style>
+    <title>web page</title>
+</head>
+
+<body>
+    <p>Press a key to see the codes</p>
+    <div></div>
+
+    <script>
+        const out = document.querySelector("div");
+
+        document.addEventListener("keyup", function (event) {
+            out.innerHTML = `event.which is ${event.which} <br />
+                 event.key is ${event.key}`;
+        });
+
+    </script>
+</body>
+
+</html>

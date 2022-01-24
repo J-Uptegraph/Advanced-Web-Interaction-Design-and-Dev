@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+.bean {
+ width: 20px;
+ height: 20px;
+ border-radius: 50%;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// Constants and Window Heights
+const x = window.innerWidth;
+const y = window.innerHeight;
+const size = "20px";
+
+for (let i = 0; i < 10; i++) {
+  let ele =  document.createElement("div");
+  let r = Math.floor(256 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+
+//write the color string using template literal format (backtick `)	    
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+  ele.classList.add("bean"); 		    
+  document.body.appendChild(ele);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+.divgen {
+ border-radius: 0%;
+ position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+</main>
+
+<script>
+  function getR(range) {
+      return Math.floor(range * Math.random());
+    }
+  function colors(divNum) {
+    return Math.floor(divNum * Math.random());
+  }
+/*
+Challenge 2: Write JavaScript code to create three new <div> elements
+inside the existing <main> element.  Requirements:
+1. <div>s must be created via a loop.
+2. <div>s must be visible somehow!
+3. The <div>s should have different background colors, one each of red
+   green, and blue.
+4. Use an array for something.  Hmmm
+
+If you have an array
+
+  arr
+
+then arr.length might be useful.
+
+*/
+
+const divNum = 3;
+const winw = window.innerWidth;
+const winh = window.innerHeight;
+const divw = 500;
+const divh = 500;
+
+
+  for (let i = 0; i < divNum; i++) {
+    let ele = document.createElement("div");
+    ele.style.width = `${divw}px`;
+    ele.style.height = `${divh}px`;
+    let top = getR(winh);
+    let left = getR(winw);
+    ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+    ele.style.left = `${left}px`;
+    ele.style.top = `${top}px`;
+    ele.classList.add("divgen");
+    document.body.appendChild(ele);
+  }
+</script>
+</body>
+</html>

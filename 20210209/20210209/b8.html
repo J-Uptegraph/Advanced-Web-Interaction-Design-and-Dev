@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+body {
+ /* Turns off scrolling */
+ overflow: hidden;
+}
+.bean {
+ border-radius: 50%;
+ position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const howmany = 5000;  //set the number here
+const winw = window.innerWidth;
+const winh = window.innerHeight;
+const width = 27;
+const height = 18;
+
+for (let i = 0; i < howmany; i++) {
+  let ele =  document.createElement("div");
+  
+  ele.style.width = `${width}px`;
+  ele.style.height = `${height}px`;
+
+  let r = Math.floor(255 * Math.random());
+  let g = Math.floor(256 * Math.random());
+  let b = Math.floor(256 * Math.random());
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+  let top = Math.floor(winh * Math.random()) + 'px';
+  let left = Math.floor(winw * Math.random()) + 'px';
+  ele.style.left = left;
+  ele.style.top = top;
+
+//apply random transform rotation (Generate a random Background)		    
+  let rotate = Math.floor(180 * Math.random())
+  ele.style.transform = `rotate(${rotate}deg)`;
+
+  ele.classList.add("bean");
+  document.body.appendChild(ele);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

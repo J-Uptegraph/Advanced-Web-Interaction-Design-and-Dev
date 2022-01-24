@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<title>web page</title>
+</head>
+<body>
+<p id="quote1">#</p>
+<p id="quote2">#</p>
+<script>
+    // Practice
+    
+    
+    /*
+    Selected shortcuts
+        
+        ++     a++ means a = a + 1  (the increment operator)
+        
+        --     a-- means a = a - 1  (the decrement operator)
+        
+        +=     a += 42 means a = a + 42
+        
+        += also works with strings.
+        */
+
+        // Examples of Modifiers :
+
+        // let a = 66;
+        // a++;
+        // console.log(a);
+
+        // let b = 42;
+        // b--;
+        // console.log(b);
+
+        // let c = 1193434;
+        // c += 200;
+        // console.log(c);
+
+        // Adding Strings as Star Wars Quotes
+        function display(text, id) {
+            document.getElementById(id).innerHTML = text;
+        }
+
+        let kenobi = "Hello ";
+        kenobi += "there!";
+        console.log(kenobi);
+        display(kenobi, "quote1");
+
+        let grievous = "General ";
+        grievous += "Kenobi!";
+        console.log(grievous);
+        display(grievous,"quote2"); 
+
+        // let darthVader = "Luke ";
+        // darthVader += "I am your Father.";
+        // console.log(darthVader);
+
+        // let lukeSkywalker = "Noo";
+        // lukeSkywalker += "ooooooooooooo!";
+        // console.log(lukeSkywalker);
+
+
+    // Programming Challenge #1
+
+    // function display(text, id) {
+    //         document.getElementById(div).innerHTML = div;
+    //     }
+    //     let words = "paragraphs"
+    //     for (let i = 0; i < 10; i++) {
+    //         display(div, words);
+    //     }
+    
+    // There are two simple kind of loops, the for loop and the while loop.
+   
+
+        let k = 0;
+        while (k < 100) {
+        console.log(k);
+        k += 10;
+        }
+        
+    /*
+        While Loop Format:
+
+        while (test condition) {
+        code executes while condition is true
+        }
+    */ 
+        
+        for (let i = 0; i < 10; i++) {
+        console.log(i);
+        }
+        
+    /* 
+        For Loop Format:
+
+        for (starting value ; test condition ; alter starting value) {
+        code executes until condition is no longer true
+        }
+    */
+
+
+    </script>
+</body>
+
+</html>

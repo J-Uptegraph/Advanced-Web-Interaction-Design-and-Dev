@@ -1,0 +1,246 @@
+<!-- <script>
+
+  let n = '42';
+
+  console.log(typeof n);
+
+  </script> -->
+
+<!-- Returns Boolean -->
+
+<!-- <script>
+
+    let n = false;
+
+    console.log(typeof n);
+
+</script> -->
+
+<!-- Returns the word Object -->
+
+<!-- <script>
+
+    let n = [];
+
+    console.log(typeof n);
+
+</script> -->
+
+<!-- <p></p>
+<script>
+    const para = document.querySelector("p");
+    let n = 42;
+
+    para.innerText = n;
+
+    console.log(typeof n);
+    console.log(typeof para.innerText);
+
+</script>
+ -->
+ 
+ <!-- Parse Int -->
+ <!-- <p></p>
+<script>
+    const para = document.querySelector("p");
+    let n = 42;
+
+    para.innerText = n;
+
+    let z = para.innerText;
+
+    console.log(typeof parseInt(z));
+
+</script> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <style>
+        body {
+            font: 200% bold Tahoma, Helvetica, sans-serif;
+        }
+    </style>
+    <title>switch</title>
+</head>
+
+<body>
+    <p>Press a key</p>
+
+    <div></div>
+
+    <script>
+        const output = document.querySelector("div");
+
+        document.addEventListener("keyup", function (event) {
+
+            switch (event.which) {
+                case 48:
+                    output.innerText = 'you pressed 0';
+                    break;
+
+                case 49:
+                    output.innerText = 'you pressed 1';
+                    break;
+
+                default:
+                    output.innerText = "you didn't press 0 or 1";
+            }
+
+        });
+
+
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+
+    <script>
+
+        let a = [];
+
+        console.log("array a has " + a.length + " elements");
+
+
+        a.push("hello");
+        a.push("howdy");
+        console.log("array a has " + a.length + " elements");
+
+
+
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+
+    <script>
+
+        let a = [];
+
+
+        a.push("hello");
+        a.push("howdy");
+        console.log("array a has " + a.length + " elements");
+
+        // By creating an element at index 5 there are empty array elements at
+        // a[3],a[4] are undefined --- they are just blank for the time being
+
+        a[5] = 'ciao';
+
+        console.log("array a has " + a.length + " elements");
+        console.log(a[3]);
+
+    </script>
+</body>
+</html> -->
+
+<!-- math.toFixed -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>type</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        let pi = 3.14159;
+
+        console.log(pi.toFixed(2));
+
+
+    </script>
+</body>
+
+</html> -->
+
+<!-- to Fixed gives us a string version of the value -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>type</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        let pi = 3.14159;
+
+        let pipi = pi.toFixed(2);
+
+        console.log(typeof pipi);
+
+
+    </script>
+</body> 
+</html> -->
+
+<!-- using .toFixed to generate a number -->
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>type</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        let pi = 3.14159;
+
+        let pipi = pi.toFixed(2);
+
+        pipi = parseFloat(pipi);
+
+        console.log(typeof pipi);
+
+
+    </script>
+</body>
+
+</html>

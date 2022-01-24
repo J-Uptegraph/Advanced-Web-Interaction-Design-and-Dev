@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<style>
+    body {
+        font-size: 200%;
+        font-weight: 700;
+        font-family: Tahoma, Helvetica, sans-serif;
+        text-align: center;
+    }
+</style>
+<title>10 Buttons</title>
+</head>
+<body>
+    <br>Choose A Button<br>
+
+    <button type ="button">1</button>
+    <button type="button">2</button>
+    <button type="button">3</button>
+    <button type="button">4</button>
+    <button type="button">5</button>
+    <button type="button">6</button>
+    <button type="button">7</button>
+    <button type="button">8</button>
+    <button type="button">9</button>
+    <button type="button">10</button>
+
+<script>
+    let storage = '';
+    // Function writes the storage to the console
+    
+    writeStorage(){
+        console.log(storage);
+    }
+
+    document.addEventListener("click", function (event) {
+        if (event.target.nodeName === 'BUTTON') {
+            //event.target.innerText "Reads the button number"
+            // console.log(event.target.innerText);
+            storage(event.target.innerText);
+            writeStorage();  
+        }
+
+    document.addEventListener("keyup", function (event) {
+        // Checks if you click a number key at the top on the keyboard
+        if (event.which > 47 && event.which < 58) {
+            storage = event.which - 48;
+            writeStorage();
+        }
+    });
+</script>
+</body>
+</html>

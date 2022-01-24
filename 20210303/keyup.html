@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <style>
+        body {
+            font-size: 200%;
+            font-weight: 700;
+            font-family: Tahoma, Helvetica, sans-serif;
+        }
+    </style>
+    <title>web page</title>
+</head>
+
+<body>
+    <p>Press a key to see the code</p>
+
+    <div></div>
+
+    <script>
+        const out = document.querySelector("div");
+        //keyup
+        document.addEventListener("keyup", function (event) {
+            //event.which reads the physical key and records a number
+            out.innerHTML = event.which;
+            if (event.which === 32){
+                out.innerHTML = "Space";
+            }
+        });
+
+    </script>
+</body>
+
+</html>

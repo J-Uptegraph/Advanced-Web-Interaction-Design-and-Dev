@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>form test</title>
+<link rel="stylesheet" href="form.css">
+</head>
+<body>
+<div id="container" style="margin:auto;max-width:600px;">
+  <input class="input" placeholder="First name" name="firstname">
+  <input class="input" placeholder="Last name" name="lastname">
+  <div class="input">Gender&emsp;&emsp;
+  Female<input type="radio" value="F" name="gender">&emsp;
+  Male<input type="radio" value="M" name="gender">
+  </div>
+  <select class="input" name="age">
+  <option value = ''>-- Age --</option>
+  </select>
+  <input class="input" placeholder="Email" name="email">
+  <button onclick>Submit</button>
+</div>
+<script>
+let obj_to_send = {};
+function readValues() {
+  let inputs = document.querySelectorAll("#container > .input");
+  console.log(input.innerText);
+}
+document.addEventListener("click",function(event) {
+  const et = event.target;
+  if (et.innerText === 'Submit') {
+    let newForm = new Object();
+    readValues();
+    }
+    age = document.querySelector("select");
+    for (i = 18; i <= 110; i++) {
+    age.innerHTML += "<option value='" + i + "'>" + i + "</option>";
+    }
+});
+</script>
+</body>
+</html>

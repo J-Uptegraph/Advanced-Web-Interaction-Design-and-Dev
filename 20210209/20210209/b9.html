@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>web page</title>
+<style>
+body {
+ overflow: hidden;
+}
+.bean {
+ border-radius: 50%;
+ position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// Basic range generation that takes and argument and returns some value
+function getR(range) {
+  return Math.floor(range * Math.random());
+}
+    
+const howmany = 5000;  //set the number here
+const winw = window.innerWidth;
+const winh = window.innerHeight;
+const width = 27;
+const height = 18;
+
+for (let i = 0; i < howmany; i++) {
+  let ele =  document.createElement("div");
+  
+  ele.style.width = `${width}px`;
+  ele.style.height = `${height}px`;
+
+  let r = getR(255)
+  let g = getR(255)
+  let b = getR(255)
+  ele.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+  let top = getR(winh);
+  let left = getR(winw);
+  ele.style.left = `${left}px` ;
+  ele.style.top = `${top}px`;
+
+//apply random transform rotation		    
+  let rotate = getR(180);
+  ele.style.transform = `rotate(${rotate}deg)`;
+
+  ele.classList.add("bean");
+  document.body.appendChild(ele);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
