@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+
+    <div></div>
+
+    <script>
+        //makes a div
+        //the only important container document on the entire document
+        //now it is accessible inside of the Javascript
+        let div1 = document.querySelector("div");
+
+        //gets the information from the URL
+        //wants two arguments the url (THE FILE THE URL IS TRYING TO GET)
+        //element is the particular element that will be stored or written
+        function fetchGet(url, element) {
+        //fetch is built into Javascript
+        //it acts as the network call
+        // *** fetch(url) looks for the file ***
+            fetch(url)
+            //checks status
+            //stores the data
+            //calls writeText() with the data and the element from the first argument
+            //passes the information to the next writeText 
+                .then(response => response.text())
+                .then(data => writeText(data, element))
+                .catch(err => console.error(err));
+        }
+
+        //puts the code on the screen
+        function writeText(stuff, element) {
+            element.innerText = stuff;
+        }
+
+        fetchGet("text.txt", div1)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>network test</title>
+</head>
+
+<body>
+    <div style="margin:auto;max-width:600px">
+        <div style="text-align:center">
+            <button>Poem</button>
+             
+            <button>Cookies</button>
+             
+            <button>Clear</button>
+
+
+        </div>
+        <main>
+        </main>
+    </div>
+
+    <script>
+
+        const elem = document.querySelector("main");
+
+        //function to fetch data via POST method
+        async function fetchPost(url, data) {
+            const response = await fetch(url, {
+                method: 'POST',
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
+        //end function
+
+
+        document.addEventListener("click", function (event) {
+            if (event.target.nodeName === 'BUTTON') {
+                let etit = event.target.innerText;
+                if (etit === 'Clear') {
+                    elem.innerHTML = '';
+                }
+                else {
+                    const data = { item: etit };
+                    fetchPost('test2.php', data)
+                        .then(data => {
+                            elem.innerHTML = data;
+                        });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

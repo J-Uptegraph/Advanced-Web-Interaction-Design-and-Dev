@@ -1,0 +1,113 @@
+<!-- https://www.javascripttutorial.net/javascript-fetch-api/ -->
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+    <div>
+    </div>
+    <script>
+        async function fetchPost(url, data) {
+            let response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.status === 200) {
+                let data = await response.text(); //get response data
+                let place = document.querySelector("div");
+                place.innerHTML = data;
+            }
+        }
+
+        const obj = {
+            fruit: 'apple',
+            vegetable: 'asparagus',
+            dairy: 'milk'
+        };
+
+        fetchPost('show_html.php', obj);
+
+    </script>
+
+</body>
+
+</html>
+<!--nothing.txt -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<title>web page</title>
+</head>
+
+<body>
+    <div>
+    </div>
+    <script>
+        async function fetchGet() {
+            let response = await fetch('nothing.txt');
+            console.log(`response.status is ${response.status}`);
+            console.log(`response.statusText is ${response.statusText}`);
+
+            if (response.status === 200) {
+                let data = await response.text(); //get response data
+                let place = document.querySelector("div");
+                place.innerText = data;
+            }
+        }
+
+
+        fetchGet();
+
+    </script>
+
+</body>
+
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+    <div>
+    </div>
+    <script>
+        async function fetchPost(url) {
+            let response = await fetch(url, {
+                // Post that data as (JSON) Javascript Object Notation
+                method: 'POST',
+                headers: {
+                    // Represents an object as a String
+                    'Content-Type': 'application/json'
+                }
+            });
+            // What we get back will be JSON data
+            if (response.status === 200) {
+                let data = await response.json(); //get response data
+                let place = document.querySelector("div");
+                place.innerText = data.line1;
+            }
+        }
+        // Passing to nothing.json
+        fetchPost('nothing.json');
+
+    </script>
+
+</body>
+
+</html> -->

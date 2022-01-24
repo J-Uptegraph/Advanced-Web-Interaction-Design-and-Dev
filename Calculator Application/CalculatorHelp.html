@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>ideas</title>
+    <style>
+        body {
+            font: 150% sans-serif;
+        }
+
+        .divvy {
+            width: 400px;
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px;
+            text-align: right;
+        }
+
+        main {
+            margin: auto;
+            max-width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="divvy"></div>
+    </main>
+
+    <script>
+        let out = '';
+        const div1 = document.querySelector(".divvy");
+        let p1 = '';
+        let p2 = '';
+
+        function writeOut() {
+            div1.innerText = out;
+        }
+
+        document.addEventListener("keyup", function (event) {
+            console.log(`event.code: ${event.code}\nevent.key: ${event.key}\nevent.which: ${event.which}`);
+            if (event.code === 'Equal') {
+                out = '';
+                p1 = '';
+                p2 = '';
+                writeOut();
+                console.log(`p1 is ${p1}, p2 is ${p2}`);
+            }
+            else if ((event.which > 47 && event.which < 58)) {
+                out += event.key;
+                writeOut();
+            }
+
+            else if (event.which === 13) {
+                if (p1 === '') {
+                    p1 = out;
+                    out = '';
+                    writeOut();
+                    console.log(`p1 is ${p1}, p2 is ${p2}`);
+                }
+                else if (p2 === '') {
+                    p2 = out;
+                    out = '';
+                    writeOut();
+                    console.log(`p1 is ${p1}, p2 is ${p2}`);
+                }
+            }
+
+
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>

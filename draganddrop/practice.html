@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='dragula.min.css' rel='stylesheet' type='text/css' />
+    <link href='example.css' rel='stylesheet' type='text/css' />
+<title>Johnathan's Dragula.js Demo</title>
+</head>
+
+<body>
+    <h1>Johnathan's Dragula.js Demo</h1>
+    <div class='wrapper'>
+        <div id='left-defaults' class='container'>
+            <div>You can move me</div>
+            <div>But don't try to move me anywhere else outside of this class</div>
+        </div>
+        <div id='right-defaults' class='container'>
+            <div>I started on the right. Try moving me to the left...</div>
+            <div>This is the default use case. You only need to specify the containers you want to use</div>
+            <div>Did I stay on the other side?</div>
+            <div>Dragging and dropping <code>&lt;input/&gt;</code> elements works just fine. You can still focus them, too. <input
+                    placeholder='This is how I can write placeholder text?' /></div>
+            <div>Make sure to check out the <a href='https://github.com/bevacqua/dragula#readme'>documentation on
+                    GitHub!</a></div>
+        </div>
+    </div>
+    <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)]);
+          </code>
+        </pre>
+    </div>
+    <div class='parent'></div>
+        <label for='hy'>There are plenty of events along the lifetime of a drag event. Check out <a
+                href='https://github.com/bevacqua/dragula#drakeon-events'>all of them</a> in the docs!</label>
+        <div class='wrapper'>
+            <div id='left-events' class='container'>
+                <div>As soon as you start dragging an element, a <code>drag</code> event is fired</div>
+                <div>Whenever an element is cloned because <code>copy: true</code>, a <code>cloned</code> event fires</div>
+                <div>The <code>shadow</code> event fires whenever the placeholder showing where an element would be dropped
+                    is moved to a different container or position</div>
+                <div>A <code>drop</code> event is fired whenever an element is dropped anywhere other than its origin
+                    <em>(where it was initially dragged from)</em></div>
+            </div>
+            <div id='right-events' class='container'>
+                <div>If the element gets removed from the DOM as a result of dropping outside of any containers, a
+                    <code>remove</code> event gets fired</div>
+                <div>A <code>cancel</code> event is fired when an element would be dropped onto an invalid target, but
+                    retains its original placement instead</div>
+                <div>The <code>over</code> event fires when you drag something over a container, and <code>out</code> fires
+                    when you drag it away from the container</div>
+                <div>Lastly, a <code>dragend</code> event is fired whenever a drag operation ends, regardless of whether it
+                    ends in a cancellation, removal, or drop</div>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)])
+      .on('drag', function (el) {
+        el.className = el.className.replace('ex-moved', '');
+      }).on('drop', function (el) {
+        el.className += ' ex-moved';
+      }).on('over', function (el, container) {
+        container.className += ' ex-over';
+      }).on('out', function (el, container) {
+        container.className = container.className.replace('ex-over', '');
+      });
+          </code>
+        </pre>
+    </div>
+    <div class='parent'>
+        <label for='hy'>Try organizing these heroes based on their comicbook company...</label>
+        <label for='hy'>[MARVEL Comics] OR [DC Comics]</label>
+        <div class='wrapper'>
+            
+            <div id='left-rm-spill' class='container'>
+                <div>Spider-Man</div>
+                <div>Batman</div>
+                <div>Deadpool</div>
+                <div>Deathstroke</div>
+            </div>
+            
+            <div id='right-rm-spill' class='container'>
+                <div>Superman</div>
+                <div>Iron Man</div>
+                <div>Captain America</div>
+                <div>Wonder Woman</div>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(single)], {
+      removeOnSpill: true
+    });
+          </code>
+        </pre>
+    </div>
+    <div class='parent'>
+        <label for='hy'>By default, dropping an element outside of any known containers will keep the element in the last
+            place it went over. You can make elements go back to origin if they're dropped outside of known containers,
+            too.</label>
+        <div class='wrapper'>
+            <div id='left-rollbacks' class='container'>
+                <div>Moving items between containers works as usual</div>
+                <div>If you try to drop an item outside of any containers, though, it'll retain its original position</div>
+                <div>When that happens, a <code>cancel</code> event will be raised</div>
+            </div>
+            <div id='right-rollbacks' class='container'>
+                <div>Note that the dragged element will go back to the place you originally dragged it from, even if you
+                    move it over other containers</div>
+                <div>This is useful if you want to ensure drop events only happen when the user intends for them to happen
+                    explicitly, avoiding surprises</div>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)], {
+      revertOnSpill: true
+    });
+          </code>
+        </pre>
+    </div>
+    <div class='parent'>
+        <label for='hy'>Copying stuff is common too, so we made it easy for you.</label>
+        <div class='wrapper'>
+            <div id='left-copy' class='container'>
+                <div>When elements are copyable, they can't be sorted in their origin container</div>
+                <div>Copying prevents original elements from being dragged. A copy gets created and <em>that</em> gets
+                    dragged instead</div>
+                <div>Whenever that happens, a <code>cloned</code> event is raised</div>
+            </div>
+            <div id='right-copy' class='container'>
+                <div>Note that the clones get destroyed if they're not dropped into another container</div>
+                <div>You'll be dragging a copy, so when they're dropped into another container you'll see the duplication.
+                </div>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)], {
+      copy: true
+    });
+          </code>
+        </pre>
+    </div>
+    <div class='parent'>
+        <label for='hy'>Copy by dragging items from left side to the right</label>
+        <div class='wrapper'>
+            <div id='left-copy-1tomany' class='container'>
+                <div>When elements are copyable, they can't be sorted in their origin container</div>
+                <div>Copying prevents original elements from being dragged. A copy gets created and <em>that</em> gets
+                    dragged instead</div>
+                <div>Whenever that happens, a <code>cloned</code> event is raised</div>
+                <div>Note that the clones get destroyed if they're not dropped into another container</div>
+                <div>You'll be dragging a copy, so when they're dropped into another container you'll see the duplication.
+                </div>
+            </div>
+            <div id='right-copy-1tomany' class='container'>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)], {
+      copy: function (el, source) {
+        return source === document.getElementById(left)
+      },
+      accepts: function (el, target) {
+        return target !== document.getElementById(left)
+      }
+    });
+          </code>
+        </pre>
+    </div>
+    <div class='parent'>
+        <label for='hy'>These elements can only be grabbed by the cross in the Upper Left</label>
+        <div class='wrapper'>
+            <div id='left-lovehandles' class='container'>
+                <div><span class='handle'>+</span>Move me, but you can use the plus sign to drag me around.</div>
+                <div><span class='handle'>+</span>Note that <code>handle</code> element in the <code>moves</code> handler is
+                    just the original event target.</div>
+            </div>
+            <div id='right-lovehandles' class='container'>
+                <div><span class='handle'>+</span>This might also be useful if you want multiple children of an element to
+                    be able to trigger a drag event.</div>
+                <div><span class='handle'>+</span>You can also use the <code>moves</code> option to determine whether an
+                    element can be dragged at all from a container, <em>drag handle or not</em>.</div>
+            </div>
+        </div>
+        <pre>
+          <code>
+    dragula([document.getElementById(left), document.getElementById(right)], {
+      moves: function (el, container, handle) {
+        return handle.classList.contains('handle');
+      }
+    });
+          </code>
+        </pre>
+        <div>There are a few similar mechanisms to determine whether an element can be dragged from a certain container <a
+                href='https://github.com/bevacqua/dragula#optionsmoves'>(<code>moves</code>)</a>, whether an element can be
+            dropped into a certain container at a certain position <a
+                href='https://github.com/bevacqua/dragula#optionsaccepts'>(<code>accepts</code>)</a>, and whether an element
+            is able to originate a drag event <a
+                href='https://github.com/bevacqua/dragula#optionsinvalid'>(<code>invalid</code>)</a>.</div>
+    </div>
+    <div class='parent'>
+        <label><strong>Click or Drag!</strong> Fires a click when the mouse button is released before a
+            <code>mousemove</code> event, otherwise a drag event is fired. No extra configuration is necessary.</label>
+        <div class='wrapper'>
+            <div id='sortable' class='container'>
+                <div>Clicking on these elements triggers a regular <code>click</code> event you can listen to.</div>
+                <div>Drag or Click on this Element... see what happens.</div>
+                <div>What is the difference</div>
+                <div>Do I say "Click" when you drag?</div>
+                <div>Do I say "Click" when you Click?></div>
+                <div>HOW COOL IS THAT!!</div>
+            </div>
+        </div>
+        <pre>
+          <code>
+            dragula([document.getElementById(container)]);
+          </code>
+        </pre>
+    </div>
+    </div>
+<script src="dragula.min.js"></script>
+<script src="example.min.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!-- The BAD way -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+    <div>hey there</div>
+    <div>more stuff</div>
+    <script>
+        const div = document.querySelectorAll("div");
+
+        div[0].style.fontSize = '400%';
+
+        let putThat = (element, prop, value) => {
+            element.setAttribute("style", prop + ':' + value);
+        }
+
+        putThat(div[0], 'background-color', 'red');
+        putThat(div[1], 'background-color', 'blue');
+
+
+    </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>web page</title>
+</head>
+
+<body>
+    <div>hey</div>
+    <div>more </div>
+    <script>
+    // <--Using the Function-- >
+        // const div = document.querySelectorAll("div");
+
+        // div[0].style.fontSize = '400%';
+
+        // let putThat = (element, prop, value) => {
+        //     element.style[prop] = value;
+        // }
+
+        // putThat(div[0], 'background-color', 'pink');
+        // putThat(div[1], 'color', 'blue');
+
+        // let bigoo {
+        //         firstname: 'Isaac',
+        //         lastname: 'Hayes'
+       let bigoo {
+            firstname: 'Isaac',
+            lastname: 'Hayes',
+            fullname: function(salute) {
+                return `${salute} ${this.firstname} ${this.lastname}`;
+            }
+        };
+
+        bigoo.firstname
+
+        bigoo.lastname
+
+        let full = bigoo.fullname('Mr.');
+    </script>
+</body>
+
+</html>

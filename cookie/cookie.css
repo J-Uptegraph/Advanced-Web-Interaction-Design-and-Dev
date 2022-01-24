@@ -1,0 +1,27 @@
+.body{
+    background: slategray;
+    color: white;
+    z-index:1;
+}
+.Shield{
+  z-index: 2;
+  position:fixed;
+  text-align:center;
+  border-radius: 40px;
+  padding: 1em;
+  border-width: 1px;
+  border-style: solid;
+  align-content: center;
+  z-index: 2; /* put .gold-box above .green-box and .dashed-box */
+  background: rgb(36, 36, 36);
+  width: auto;
+  left: 15em;
+  top: 3em;
+  color: rgb(255, 255, 255);
+}
+
+
+.hiddenShield {
+    display:none;
+    size: 0;
+}

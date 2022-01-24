@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Example file
+So many things here: the point is to show that operations should take
+place invisibly, behind the scenes. What shows up in the browser window
+merely reflects what's going on in the code. If we are using a variable to
+collect user input then we should pass the value to other variables to 
+perform whatever operations we want to perform.  IN other words, there
+is a variable for user input.  There are other variables for doing
+other things.
+-->
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>ideas</title>
+
+<style>
+body {
+            font-size: 100%;
+            font-weight: 700;
+            font-family: Tahoma, Helvetica, sans-serif;
+            text-align: center;
+        }
+.divvy {
+ width: 400px;
+ height: 50px;
+ background-color: lightblue;
+ margin: 10px;
+ text-align: right;  /* right-justify the way a calculator does */
+}
+p {
+ width: 400px;
+ height: 60px;
+ margin: 10px;
+ background-color: pink;
+}
+
+main {
+ margin: auto;
+ max-width: 500px;
+}
+</style>
+</head>
+
+
+<body>
+<main>
+<div class="divvy"></div>
+<p>First value: </p>
+<p>Second value: </p>
+<div class="Buttons"></div>
+<br>Calculator<br>
+<div class="row">
+  <button type="button">7</button>
+  <button type="button">8</button>
+  <button type="button">9</button>
+  <button type="button">+</button>
+</div>
+<div class="row">
+  <button value="4">4</button>
+  <button value="5">5</button>
+  <button value="6">6</button>
+  <button value="-" class="operator">-</button>
+</div>
+<div class="row">
+  <button type="button">1</button>
+  <button type="button">2</button>
+  <button type="button">3</button>
+  <button type="button">*</button>
+</div>
+<div class="row">
+  <button type="button">0</button>
+  <button type="button">=</button>
+  <button type="button">C</button>
+  <button type="button">/</button>
+</div>
+</main>
+<!-- <script type="text/javascript" src="Calculator.js"></script> -->
+</body>
+
+<script>
+/*    Here is some code. One <div> and two <p> are on the screen.  Ignore
+      the <p>s -- they are there merely to show you what's going on.  The
+      important HTML element is the <div>.  The <p>s are included so that
+      you don't have to rely on console.log() to see what's happening.
+      OBviously a calculator has only ONE little window on the screen.
+*/
+
+let out = '';  //this will hold a constructed string
+const div1 = document.querySelector(".divvy");  //grab the <div> so we can use it 
+const paras = document.querySelectorAll("p");  //grab the <p>s
+let p1 = '';  //two more variables in case we want to operate
+let p2 = 'Second value: ';
+
+function writeOut() {  //unnecessary function -- just for demo
+  div1.innerText = out;  //writes the constructed string into the <div>
+}
+
+// Reads Buttons Writes
+document.addEventListener("click", function (event) {
+    if (event.target.nodeName === 'BUTTON') {
+      // event.target.innerText "Reads the button number
+      out += event.target.innerText;
+      writeOut();
+  }
+});
+
+document.addEventListener("keyup",function(event) { 
+//event listener for keys
+
+/* reset -- important note -- I'm using event.code here (and only here) to
+retrieve the textual represenation of a key, in this case "Equal." It's
+time-consuming to do this all the time, so I never do it all the time,
+but I'm doing it for the equal sign because my fancy-shmancy but oh-so-cheap
+gaming keyboard returns different numbers for event.which depending on
+which browser is running! Strange but true. This is probably a consequence
+of the extra "game" keys on the keyboard, but who knows? I haven't tried
+other keyboards or other computers yet; I will.  I just know that checking
+event.code for "Equal" works in any browser.  The number and letter keys
+don't show any variance.
+*/
+
+  function clear(){
+  if (event.code === 'Backspace') { //use the equal sign to reset (NOT what
+    out = '';                   //a calculator uses to reset)
+    p1 = '';
+    p2 = 'Second value: ';
+    paras[0].innerText = '';    //set everything blank
+    paras[1].innerText = '';
+    writeOut();                 //write blank message
+  }
+  }
+
+  function add(){
+    // if (event.key === '+') { //use the equal sign to reset (NOT what
+      //a calculator uses to reset)
+      p1 = parseFloat(out);
+      out = '';
+      console.log(out);
+      console.log(p1);
+      console.log(p2);
+      writeOut();
+
+    if (event.key === '=') {
+    p2 = parseFloat(out);
+    out = p1 + p2;
+    p1 = parseFloat(out);
+
+    paras[0].innerText = '';    //set everything blank
+    paras[1].innerText = '';
+    writeOut();                 //write blank message
+    p1 = '';
+    p2 = '';
+    }
+    }
+
+  //   function subtract() {
+
+  //   if (event.key === '-') { //use the equal sign to reset (NOT what
+  //     //a calculator uses to reset)
+  //     p1 = parseFloat(out);
+  //     out = '';
+  //     console.log(out);
+  //     console.log(p1);
+  //     console.log(p2);
+  //     writeOut();
+  //   }
+
+  //   if (event.key === '=') {
+  //     p2 = parseFloat(out);
+  //     out = p1 - p2;
+  //     p1 = parseFloat(out);
+
+  //     paras[0].innerText = '';    //set everything blank
+  //     paras[1].innerText = '';
+  //     writeOut();                 //write blank message
+  //     p1 = '';
+  //     p2 = '';
+  //   }
+  // }
+
+  // function multiply() {
+
+  //   if (event.code === 'Astrix') { //use the equal sign to reset (NOT what
+  //     //a calculator uses to reset)
+  //     p1 = parseFloat(out);
+  //     out = '';
+  //     console.log(out);
+  //     console.log(p1);
+  //     console.log(p2);
+
+  //     writeOut();
+  //   }
+
+  //   if (event.code === 'Equal') {
+  //     p2 = parseFloat(out);
+  //     out = p1 * p2;
+  //     p1 = parseFloat(out);
+
+  //     paras[0].innerText = '';    //set everything blank
+  //     paras[1].innerText = '';
+  //     writeOut();                 //write blank message
+  //   }
+  // }
+
+  
+
+
+  // if (event.code === 'Equal') { //use the equal sign to reset (NOT what
+  //   out = '';                   //a calculator uses to reset)
+  //   p1 = 'First value: ';
+  //   p2 = 'Second value: ';
+  //   paras[0].innerText = '';    //set everything blank
+  //   paras[1].innerText = '';
+  //   writeOut();                 //write blank message
+  // }
+
+//read either a number or a letter on the keyboard
+//numbers are 48-57, letters are 65-90
+
+  if ((event.which > 47 && event.which < 58)) {
+    out += event.key;  //get the thing written on a key, append to out
+    writeOut();        //write the message in the blue window
+  }
+  else if ((event.which === event.code === '*')){
+    multiply();
+  }
+  else if (event.which === 13) {  //unless the user hits Enter
+    if (p1 === '') {   //if the 1st variable is available
+		 p1 += out;                     //copy out to it
+		 paras[0].innerText = p1;    // btw could replace this with console.log
+      out = '';                   //clear out, clear message box
+      writeOut();
+    }   
+    else if (p2 === 'Second value: ') { //or if the 1st is *not* available but the 2nd *is*
+      p2 += out;           //then copy out to the 2nd variable
+      paras[1].innerText = p2;
+      out = '';
+      writeOut();
+    }   
+  }
+  clear(); 
+  // subtract();
+});
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Example file
+So many things here: the point is to show that operations should take
+place invisibly, behind the scenes. What shows up in the browser window
+merely reflects what's going on in the code. If we are using a variable to
+collect user input then we should pass the value to other variables to 
+perform whatever operations we want to perform.  IN other words, there
+is a variable for user input.  There are other variables for doing
+other things.
+-->
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<title>ideas</title>
+
+<style>
+body {
+ font: 150% sans-serif;
+}
+.divvy {
+ width: 400px;
+ height: 50px;
+ background-color: lightblue;
+ margin: 10px;
+ text-align: right;  /* right-justify the way a calculator does */
+}
+main {
+ margin: auto;
+ max-width: 500px;
+}
+</style>
+</head>
+
+
+<body>
+<main>
+<div class="divvy"></div>
+</main>
+
+<script>
+// Here is some code with a<div> for the message windows.
+let out = '';  //this will hold a constructed string
+const div1 = document.querySelector(".divvy"); //grab the <div> so we can use it 
+let p1 = '';
+let p2 = '';
+
+function writeOut() {  //unnecessary function -- just for demo
+  div1.innerText = out;  //writes the constructed string into the <div>
+}
+
+document.addEventListener("keyup",function(event) { //event listener for keys
+
+/* reset -- important note -- I'm using event.code here (and only here) to
+retrieve the textual represenation of a key, in this case "Equal." It's
+time-consuming to do this all the time, so I never do it all the time,
+but I'm doing it for the equal sign because my fancy-shmancy but oh-so-cheap
+gaming keyboard returns different numbers for event.which depending on
+which browser is running! Strange but true. This is probably a consequence
+of the extra "game" keys on the keyboard, but who knows? I haven't tried
+other keyboards or other computers yet; I will.  I just know that checking
+event.code for "Equal" works in any browser.  The number and letter keys
+don't show any variance.
+*/
+
+  if (event.code === 'Equal') { //use the equal sign to reset (NOT what
+    out = '';                   //a calculator uses to reset)
+    p1 = '';
+    p2 = '';
+    writeOut();                 //write blank message
+    console.log(`p1 is ${p1}, p2 is ${p2}`);
+  }
+
+//read either a number or a letter on the keyboard
+//numbers are 48-57, letters are 65-90
+  else if ((event.which > 47 && event.which < 58)  || (event.which > 64 && event.which < 91) ) {
+    out += event.key;  //get the thing written on a key, append to out
+    writeOut();        //write the message in the blue window
+  }
+										  else if (event.which === 13) {  //unless the user hits Enter
+    if (p1 === '') {   //if the 1st variable is available
+      p1 = out;                     //copy out to it
+      out = '';                     //clear out, clear message box
+      writeOut();
+      console.log(`p1 is ${p1}, p2 is ${p2}`);
+    }   
+    else if (p2 === '') { //or if the 1st is *not* available but the 2nd *is*
+      p2 = out;           //then copy out to the 2nd variable
+      out = '';
+      writeOut();
+      console.log(`p1 is ${p1}, p2 is ${p2}`);
+    }   
+  }
+});
+  
+</script>
+</body>
+</html>
